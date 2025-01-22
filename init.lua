@@ -619,11 +619,11 @@ require('lazy').setup({
       --
       -- TODO: decide on path retrieval.
       --
-      local npm_path = vim.fn.system('npm root -g'):gsub('\n', '/')
+      -- local npm_path = vim.fn.system('npm root -g'):gsub('\n', '/')
       -- local typescript_plugin_path = npm_path .. '@vue/typescript-plugin'
-      local vue_language_server_path = npm_path .. '@vue/language-server'
-      -- local mason_registry = require 'mason-registry'
-      -- local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+      -- local vue_language_server_path = npm_path .. '@vue/language-server'
+      local mason_package_path = require('mason-registry').get_package('vue-language-server'):get_install_path()
+      local vue_language_server_path = mason_package_path .. '/node_modules/@vue/language-server'
 
       local servers = {
         -- clangd = {},
