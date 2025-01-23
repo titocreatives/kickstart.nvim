@@ -626,8 +626,12 @@ require('lazy').setup({
       local vue_language_server_path = mason_package_path .. '/node_modules/@vue/language-server'
 
       local servers = {
+        emmet_language_server = {
+          filetypes = { 'css', 'html', 'less', 'pug', 'sass', 'scss', 'postcss', 'typescriptreact', 'vue' },
+        },
+        tailwindcss = {},
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
