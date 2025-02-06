@@ -99,10 +99,10 @@ vim.g.have_nerd_font = true
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
-vim.opt.number = true
+-- vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -188,6 +188,8 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+vim.keymap.set("i", "jk", "<ESC>l", { desc = "Exit insert with fast jk combo"})
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -875,21 +877,27 @@ require("lazy").setup({
       })
     end,
   },
-
+  {
+    "rebelot/kanagawa.nvim",
+    event = "VeryLazy"
+  },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     -- "folke/tokyonight.nvim",
-    "rebelot/kanagawa.nvim",
+    "sainnhe/sonokai",
+    -- "rebelot/kanagawa.nvim",
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      -- vim.cmd.colorscheme("tokyonight-night")
-      vim.cmd.colorscheme("kanagawa")
+      -- vim.cmd.colorscheme("tokyonight-night"):w
+      vim.g.sonokai_style = "espresso"
+      vim.cmd.colorscheme("sonokai")
+      -- vim.cmd.colorscheme("kanagawa")
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi("Comment gui=none")
